@@ -14,7 +14,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $DepartmentDataList = Department::all();
+        return view ('Department.index', ['DepartmentDataList'=> $DepartmentDataList]);
     }
 
     /**
@@ -24,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view ('department.create');
     }
 
     /**
@@ -35,7 +36,19 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'department_code' => 'required|max:15|alpha_dash|unique:department,department_code',
+            'fullname' => 'required|max:50|alpha_dash'
+           
+        ]);
+
+        $form_data = array(
+            'department_code' => $request->department_code,
+            'fullname' => $request->fullname,
+        );
+
+        Student::create($form_data);
+        return view('index');
     }
 
     /**
@@ -46,7 +59,8 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        $DepartmentData = Department::findOrFail($department->department_code);
+        return view('department.view', compact('DepartmentData'));
     }
 
     /**
@@ -57,7 +71,8 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        $DepartmentData = Department::findOrFail($department->department_code);
+        return view('department.edit', compact('DepartmentData'));
     }
 
     /**
@@ -69,7 +84,13 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $form_data = array(
+            'department_code' => $request->department_code,
+            'fullname' => $request->fullname
+        );
+  
+        Department::where('department_code',$department->department_code)->update($form_data);
+        return redirect()->route('department.index');
     }
 
     /**
@@ -80,6 +101,11 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $DepartmentData = Student::findOrFail($department->department_code);
+        $DepartmentData -> delete();
+        echo "Delete Successfully";
+        if($DepartmentData -> delete()){
+            echo "Delete Successfully";
+        }
     }
 }
