@@ -14,7 +14,8 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+      $StatusDataList = Status::all();
+      return view ('status.index', ['StatusDataList'=> $StatusDataList]);
     }
 
     /**
@@ -24,7 +25,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view ('status.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+          'status_name' => 'required|max:50|alpha_dash'
+
+      ]);
+
+      $form_data = array(
+          'status_name' => $request->status_name,
+      );
+
+      Status::create($form_data);
+      return view('index');
     }
 
     /**
@@ -57,7 +68,8 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-        //
+      $StatusData = Course::findOrFail($status->status_name);
+      return view('status.edit', compact('StatusData'));
     }
 
     /**
@@ -69,7 +81,11 @@ class StatusController extends Controller
      */
     public function update(Request $request, Status $status)
     {
-        //
+      $form_data = array(
+          'status_name' => $request->status_name
+      );
+      Status::where('status_name',$status->status_name)->update($form_data);
+      return redirect()->route('status.index');
     }
 
     /**
@@ -80,6 +96,10 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-        //
+      $StatusData = Student::findOrFail($status->status_name);
+      $StatusData -> delete();
+      echo "Delete Successfully";
+      if($StatusData -> delete()){
+          echo "Delete Successfully";
     }
 }

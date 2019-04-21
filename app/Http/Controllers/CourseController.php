@@ -33,15 +33,15 @@ class CourseController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-          'fullname' => 'required|max:50|alpha_dash'
+          'course_name' => 'required|max:50|alpha_dash'
 
       ]);
 
       $form_data = array(
-          'fullname' => $request->course_name,
+          'course_name' => $request->course_name,
       );
 
-      Student::create($form_data);
+      Course::create($form_data);
       return view('index');
     }
 
@@ -64,7 +64,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-      $StudentData = Course::findOrFail($course->course_name);
+      $CourseData = Course::findOrFail($course->course_name);
       return view('course.edit', compact('CourseData'));
     }
 
@@ -78,7 +78,7 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
       $form_data = array(
-          'fullname' => $request->course_name
+          'course_name' => $request->course_name
       );
       Course::where('course_name',$course->course_name)->update($form_data);
       return redirect()->route('course.index');
@@ -92,10 +92,10 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-      $CoursetData = Student::findOrFail($course->course_name);
-      $CoursetData -> delete();
+      $CourseData = Student::findOrFail($course->course_name);
+      $CourseData -> delete();
       echo "Delete Successfully";
-      if($CoursetData -> delete()){
+      if($CourseData -> delete()){
           echo "Delete Successfully";
     }
 }
