@@ -67,8 +67,8 @@
         Welcome to index manage student
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
-                @foreach($StudentDataList as $StudentDataList)
-                    <li class="list-group-item"><a>{{$StudentDataList->student_code}}</a> <a>{{$StudentDataList->fullname}} <a href="/student/{{$StudentDataList->student_code}}">ดูข้อมูล</a><a href="/student/{{$StudentDataList->student_code}}/edit">แก้ไขข้อมูล</a>
+                @foreach($CourseDataList as $CourseDataList)
+                    <li class="list-group-item"><a>{{$CourseDataList->course_name}}</a> <a>{{$CourseDataList->course_name}} <a href="/course/{{$CourseDataList->course_name}}">ดูข้อมูล</a><a href="/course/{{$CourseDataList->course_name}}/edit">แก้ไขข้อมูล</a>
 
                     <form action="{{route('course.destroy', $CourseDataList->course_name)}}" method="POST">
                         @csrf
