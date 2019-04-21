@@ -70,7 +70,7 @@
                 @foreach($StudentDataList as $StudentDataList)
                     <li class="list-group-item"><a>{{$StudentDataList->student_code}}</a> <a>{{$StudentDataList->fullname}} <a href="/student/{{$StudentDataList->student_code}}">ดูข้อมูล</a><a href="/student/{{$StudentDataList->student_code}}/edit">แก้ไขข้อมูล</a>
 
-                    <form action="{{route('student.destroy', $StudentDataList->student_code)}}" method="POST">
+                    <form action="{{route('course.destroy', $CourseDataList->course_name)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Delete</button>
