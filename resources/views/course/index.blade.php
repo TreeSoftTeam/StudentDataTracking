@@ -68,7 +68,7 @@
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
                 @foreach($CourseDataList as $CourseDataList)
-                    <li class="list-group-item"><a>{{$CourseDataList->course_name}}</a> <a>{{$CourseDataList->course_name}} <a href="/course/{{$CourseDataList->course_name}}">ดูข้อมูล</a><a href="/course/{{$CourseDataList->course_name}}/edit">แก้ไขข้อมูล</a>
+                    <li class="list-group-item"><a>{{$CourseDataList->course_name}}</a> <a>{{$CourseDataList->course_name}} <a href="/course/{{$CourseDataList->course_id}}">ดูข้อมูล</a><a href="/course/{{$CourseDataList->course_name}}/edit">แก้ไขข้อมูล</a>
 
                     <form action="{{route('course.destroy', $CourseDataList->course_name)}}" method="POST">
                         @csrf

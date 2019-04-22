@@ -92,7 +92,7 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-      $CourseData = Student::findOrFail($course->course_name);
+      $CourseData = Course::findOrFail($course->course_name);
       $CourseData -> delete();
       echo "Delete Successfully";
       if($CourseData -> delete()){
