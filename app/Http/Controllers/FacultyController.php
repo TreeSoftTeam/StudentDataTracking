@@ -37,17 +37,17 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'faculty_code' => 'required|max:15|alpha_dash|unique:faculty,faculty_code',
-            'fullname' => 'required|max:50|alpha_dash'
+            'faculty_id' => 'required|max:15|alpha_dash|unique:faculty,faculty_id',
+            'facultyname' => 'required|max:50|alpha_dash'
            
         ]);
 
         $form_data = array(
-            'faculty_code' => $request->faculty_code,
-            'fullname' => $request->fullname,
+            'faculty_id' => $request->faculty_id,
+            'facultyname' => $request->facultyname,
         );
 
-        Student::create($form_data);
+        Faculty::create($form_data);
         return view('index');
     }
 
@@ -59,7 +59,7 @@ class FacultyController extends Controller
      */
     public function show(Faculty $faculty)
     {
-        $FacultyData = Faculty::findOrFail($faculty->faculty_code);
+        $FacultyData = Faculty::findOrFail($faculty->faculty_id);
         return view('faculty.view', compact('FacultytData'));
     }
 
@@ -71,7 +71,7 @@ class FacultyController extends Controller
      */
     public function edit(Faculty $faculty)
     {
-        $FacultyData = Faculty::findOrFail($faculty->faculty_code);
+        $FacultyData = Faculty::findOrFail($faculty->faculty_id);
         return view('faculty.edit', compact('FacultytData'));
     }
 
@@ -85,11 +85,11 @@ class FacultyController extends Controller
     public function update(Request $request, Faculty $faculty)
     {
         $form_data = array(
-            'faculty_code' => $request->faculty_code,
-            'fullname' => $request->fullname
+            'faculty_id' => $request->faculty_id,
+            'facultyname' => $request->facultyname
         );
   
-        Faculty::where('faculty_code',$faculty->faculty_code)->update($form_data);
+        Faculty::where('faculty_id',$faculty->faculty_id)->update($form_data);
         return redirect()->route('faculty.index');
     }
 
@@ -101,7 +101,7 @@ class FacultyController extends Controller
      */
     public function destroy(Faculty $faculty)
     {
-        $FacultyData = Student::findOrFail($faculty->faculty_code);
+        $FacultyData = Faculty::findOrFail($faculty->faculty_id);
         $FacultyData -> delete();
         echo "Delete Successfully";
         if($FacultyData -> delete()){

@@ -68,9 +68,9 @@
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
                 @foreach($FacultyDataList as $FacultyDataList)
-                    <li class="list-group-item"><a>{{$FacultyDataList->faculty_code}}</a> <a>{{$FacultyDataList->fullname}} <a href="/faculty/{{$FacultyDataList->faculty_code}}">ดูข้อมูล</a><a href="/faculty/{{$FacultyDataList->faculty_code}}/edit">แก้ไขข้อมูล</a>
+                    <li class="list-group-item"><a>{{$FacultyDataList->faculty_id}}</a> <a>{{$FacultyDataList->facultyname}} <a href="/faculty/{{$FacultyDataList->faculty_id}}">ดูข้อมูล</a><a href="/faculty/{{$FacultyDataList->faculty_id}}/edit">แก้ไขข้อมูล</a>
                     
-                    <form action="{{route('faculty.destroy', $FacultyDataList->faculty_code)}}" method="POST">
+                    <form action="{{route('faculty.destroy', $FacultyDataList->faculty_id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Delete</button>

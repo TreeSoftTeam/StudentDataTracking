@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>StudentDataTrackingSystem | {{$DepartmentData->departname}}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -64,13 +64,12 @@
         </style>
     </head>
     <body>
-    <form method="post" action="{{ route('faculty.update', $FacultyData->faculty_id) }}" enctype="multipart/form-data">
-        @csrf
-        @method('PATCH')
-        <div class="form-group">
-            <input type="text" name="faculty_id" class="form-control" value="{{ $FacultyData->faculty_id }}" placeholder="Enter FacultyID"/>
-            <input type="text" name="facultyname" class="form-control" value="{{ $FacultyData->facultyname }}" placeholder="Enter FacultyName"/>
-            <input type="submit" name="add" class="btn btn-primary" value="Edit" />
-    </form>
+        <h1>Information</h1>
+        <br>
+        <h3>DepartmentID: {{$DepartmentData->department_id}}</h3>
+        <h3>DepartmentName: {{$DepartmentData->departname}}</h3>
+        <br>
+        <h3>สร้างเมื่อ: {{$DepartmentData->create_date}}</h3>
+        <h3>แก้ไขล่าสุด: {{$DepartmentData->last_update}}</h3>
     </body>
 </html>
