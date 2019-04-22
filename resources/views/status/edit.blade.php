@@ -64,6 +64,7 @@
         </style>
     </head>
     <body>
+      <h3>{{$StatusData->status_name}}</h3>
       <form method="post" action="{{ route('status.update', $StatusData->status_id) }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
