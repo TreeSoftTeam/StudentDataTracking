@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        Welcome to index manage student
+        Welcome to index manage Course
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
                 @foreach($CourseDataList as $CourseDataList)

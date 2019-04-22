@@ -68,7 +68,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-      $StatusData = Course::findOrFail($status->status_name);
+      $StatusData = Status::findOrFail($status->status_name);
       return view('status.edit', compact('StatusData'));
     }
 
@@ -96,7 +96,7 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-      $StatusData = Student::findOrFail($status->status_name);
+      $StatusData = Status::findOrFail($status->status_name);
       $StatusData -> delete();
       echo "Delete Successfully";
       if($StatusData -> delete()){
