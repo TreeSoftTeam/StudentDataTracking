@@ -42,7 +42,7 @@ class CourseController extends Controller
       );
 
       Course::create($form_data);
-      return view('index');
+      return redirect()->action('CourseController@index');
     }
 
     /**
@@ -64,7 +64,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-      $CourseData = Course::findOrFail($course->course_name);
+      $CourseData = Course::findOrFail($course->course_id);
       return view('course.edit', compact('CourseData'));
     }
 
@@ -94,9 +94,7 @@ class CourseController extends Controller
     {
       $CourseData = Course::findOrFail($course->course_id);
       $CourseData -> delete();
-      echo "Delete Successfully";
-      if($CourseData -> delete()){
-          echo "Delete Successfully";
+      return redirect()->route('course.index');
     }
 }
 }

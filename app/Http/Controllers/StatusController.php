@@ -46,7 +46,7 @@ class StatusController extends Controller
       );
 
       Status::create($form_data);
-      return view('index');
+      return redirect()->action('StatusController@index');
     }
 
     /**
@@ -68,7 +68,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-      $StatusData = Status::findOrFail($status->status_name);
+      $StatusData = Status::findOrFail($status->status_id);
       return view('status.edit', compact('StatusData'));
     }
 
@@ -96,10 +96,9 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-      $StatusData = Status::findOrFail($status->status_name);
+      $StatusData = Status::findOrFail($status->status_id);
       $StatusData -> delete();
-      echo "Delete Successfully";
-      if($StatusData -> delete()){
-          echo "Delete Successfully";
+      return redirect()->route('status.index');
+
     }
 }

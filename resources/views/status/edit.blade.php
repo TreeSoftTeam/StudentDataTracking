@@ -64,10 +64,12 @@
         </style>
     </head>
     <body>
+      <form method="post" action="{{ route('status.update', $StatusData->status_id) }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <div class="form-group">
             <input type="text" name="status_name" class="form-control" placeholder="Enter status_name"/>
             <input type="submit" name="save" class="btn btn-primary" value="save" />
+        </form>
     </body>
 </html>
