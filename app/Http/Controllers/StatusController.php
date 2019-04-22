@@ -98,7 +98,7 @@ class StatusController extends Controller
     {
       $StatusData = Status::findOrFail($status->status_id);
       $StatusData -> delete();
-      return route('status.index');
+      return redirect()->route('status.index');
 
     }
 }
