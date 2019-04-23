@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-      <h3>{{CourseData->course_name}}</h3>
+      <h3>{{$CourseData->course_name}}</h3>
       <form method="post" action="{{ route('course.update', $CourseData->course_id) }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
