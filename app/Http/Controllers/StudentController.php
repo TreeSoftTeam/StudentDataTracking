@@ -38,7 +38,7 @@ class StudentController extends Controller
     {
         $request->validate([
             'student_code' => 'required|max:15|alpha_dash|unique:student,student_code',
-            'fullname' => 'required|max:50|alpha_dash'
+            'fullname' => 'required|max:50'
            
         ]);
 
@@ -48,7 +48,7 @@ class StudentController extends Controller
         );
 
         Student::create($form_data);
-        return view('index');
+        return redirect('student');
     }
 
     /**
