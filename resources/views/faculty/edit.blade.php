@@ -68,8 +68,7 @@
         @csrf
         @method('PATCH')
         <div class="form-group">
-            <input type="text" name="faculty_id" class="form-control" value="{{ $FacultyData->faculty_id }}" placeholder="Enter FacultyID"/>
-            <input type="text" name="facultyname" class="form-control" value="{{ $FacultyData->facultyname }}" placeholder="Enter FacultyName"/>
+            <input type="text" name="faculty_name" class="form-control" value="{{ $FacultyData->faculty_name }}" placeholder="Enter FacultyName"/>
             <input type="submit" name="add" class="btn btn-primary" value="Edit" />
     </form>
     </body>

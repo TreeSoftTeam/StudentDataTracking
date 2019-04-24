@@ -67,7 +67,7 @@
         <h1>Information</h1>
         <br>
         <h3>FacultyID: {{$FacultyData->faculty_id}}</h3>
-        <h3>FacultyName: {{$FacultyData->facultyname}}</h3>
+        <h3>FacultyName: {{$FacultyData->faculty_name}}</h3>
         <br>
         <h3>สร้างเมื่อ: {{$FacultyData->create_date}}</h3>
         <h3>แก้ไขล่าสุด: {{$FacultyData->last_update}}</h3>

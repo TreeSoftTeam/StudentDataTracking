@@ -67,7 +67,7 @@
         <h1>Information</h1>
         <br>
         <h3>DepartmentID: {{$DepartmentData->department_id}}</h3>
-        <h3>DepartmentName: {{$DepartmentData->departname}}</h3>
+        <h3>DepartmentName: {{$DepartmentData->department_name}}</h3>
         <br>
         <h3>สร้างเมื่อ: {{$DepartmentData->create_date}}</h3>
         <h3>แก้ไขล่าสุด: {{$DepartmentData->last_update}}</h3>

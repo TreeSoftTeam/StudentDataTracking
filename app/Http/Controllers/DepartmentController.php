@@ -15,7 +15,7 @@ class DepartmentController extends Controller
     public function index()
     {
         $DepartmentDataList = Department::all();
-        return view ('Department.index', ['DepartmentDataList'=> $DepartmentDataList]);
+        return view ('department.index', ['DepartmentDataList'=> $DepartmentDataList]);
     }
 
     /**
@@ -37,18 +37,18 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'department_id' => 'required|max:15|alpha_dash|unique:department,department_id',
-            'departmentname' => 'required|max:50|alpha_dash'
+            
+            'department_name' => 'required|max:50|alpha_dash'
            
         ]);
 
         $form_data = array(
-            'department_id' => $request->department_id,
-            'departmentname' => $request->departmentname,
+         
+            'departmentname' => $request->department_name,
         );
 
         Department::create($form_data);
-        return view('index');
+        return redirect()->route('department.index');
     }
 
     /**
@@ -85,8 +85,8 @@ class DepartmentController extends Controller
     public function update(Request $request, Department $department)
     {
         $form_data = array(
-            'department_id' => $request->department_id,
-            'departmentname' => $request->departmentname
+
+            'department_name' => $request->department_name
         );
   
         Department::where('department_id',$department->department_id)->update($form_data);

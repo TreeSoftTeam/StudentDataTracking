@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 
 Route::resource('student', 'StudentController');
+Route::resource('faculty', 'FacultyController');
+Route::resource('department', 'DepartmentController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

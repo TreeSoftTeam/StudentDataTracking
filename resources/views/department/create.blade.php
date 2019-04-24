@@ -67,8 +67,8 @@
     <form method="POST" action="{{route('department.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <input type="text" name="department_id" class="form-control" placeholder="Enter DepartmentID"/>
-            <input type="text" name="departmentname" class="form-control" placeholder="Enter DepartmentName"/>
+           
+            <input type="text" name="department_name" class="form-control" placeholder="Enter DepartmentName"/>
             <input type="submit" name="add" class="btn btn-primary" value="Add" />
     </form>
     </body>

@@ -15,7 +15,7 @@ class FacultyController extends Controller
     public function index()
     {
         $FacultyDataList = Faculty::all();
-        return view ('Faculty.index', ['FacultyDataList'=> $FacultyDataList]);
+        return view ('faculty.index', ['FacultyDataList'=> $FacultyDataList]);
     }
 
     /**
@@ -37,18 +37,18 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'faculty_id' => 'required|max:15|alpha_dash|unique:faculty,faculty_id',
-            'facultyname' => 'required|max:50|alpha_dash'
+            
+            'faculty_name' => 'required|max:50|alpha_dash'
            
         ]);
 
         $form_data = array(
-            'faculty_id' => $request->faculty_id,
-            'facultyname' => $request->facultyname,
+            
+            'faculty_name' => $request->faculty_name,
         );
 
         Faculty::create($form_data);
-        return view('index');
+        return redirect()->route('faculty.index');
     }
 
     /**
@@ -60,7 +60,7 @@ class FacultyController extends Controller
     public function show(Faculty $faculty)
     {
         $FacultyData = Faculty::findOrFail($faculty->faculty_id);
-        return view('faculty.view', compact('FacultytData'));
+        return view('faculty.view', compact('FacultyData'));
     }
 
     /**
@@ -72,7 +72,7 @@ class FacultyController extends Controller
     public function edit(Faculty $faculty)
     {
         $FacultyData = Faculty::findOrFail($faculty->faculty_id);
-        return view('faculty.edit', compact('FacultytData'));
+        return view('faculty.edit', compact('FacultyData'));
     }
 
     /**
@@ -85,8 +85,8 @@ class FacultyController extends Controller
     public function update(Request $request, Faculty $faculty)
     {
         $form_data = array(
-            'faculty_id' => $request->faculty_id,
-            'facultyname' => $request->facultyname
+            
+            'faculty_name' => $request->faculty_name
         );
   
         Faculty::where('faculty_id',$faculty->faculty_id)->update($form_data);

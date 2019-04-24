@@ -68,13 +68,13 @@
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
                 @foreach($DepartmentDataList as $DepartmentDataList)
-                    <li class="list-group-item"><a>{{$DepartmentDataList->department_id}}</a> <a>{{$DepartmentDataList->departmentname}} <a href="/department/{{$DepartmentDataList->department_id}}">ดูข้อมูล</a><a href="/department/{{$DepartmentDataList->department_id}}/edit">แก้ไขข้อมูล</a>
+                    <li class="list-group-item"><a>{{$DepartmentDataList->department_id}}</a> <a>{{$DepartmentDataList->department_name}} <a href="/department/{{$DepartmentDataList->department_id}}">ดูข้อมูล</a><a href="/department/{{$DepartmentDataList->department_id}}/edit">แก้ไขข้อมูล</a>
                     
-                    <form action="{{route('department.destroy', $DepartmentDataList->department_id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Delete</button>
-                    </form>
+                        <a href="{{route('department.destroy', $DepartmentDataList->department_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();">ลบ</a>
+                        <form id="del-form" action="{{route('department.destroy', $DepartmentDataList->department_id)}}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                        </form>
                     
                     </li>
                 @endforeach
