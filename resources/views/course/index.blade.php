@@ -65,11 +65,7 @@
     </head>
     <body>
         Welcome to index manage Course
-        <a href="{{route('course.create')}}" onclick="submit();">Create</a>
-        <form id="del-form" action="{{route('course.create')}}" method="POST" style="display: none;">
-            @csrf
-            @method('CREATE')
-        </form>
+        <a href="{{route('course.create')}}">Create</a>
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
                 @foreach($CourseDataList as $CourseDataList)

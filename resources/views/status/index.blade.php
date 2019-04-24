@@ -65,24 +65,20 @@
     </head>
     <body>
         Welcome to index manage status
-        <a href="{{route('status.create')}}" onclick="submit();">Create</a>
-        <form id="del-form" action="{{route('status.create')}}" method="POST" style="display: none;">
-            @csrf
-            @method('CREATE')
-        </form>
+        <a href="{{route('status.create')}}">Create</a>
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
                 @foreach($StatusDataList as $StatusDataList)
                     <li class="list-group-item"><a>{{$StatusDataList->status_name}}</a><a href="/status/{{$StatusDataList->status_id}}/edit">แก้ไขข้อมูล</a>
-                    <a href="{{route('status.destroy', $StatusDataList->status_id)}}" onclick="submit();">ลบ</a>
-                    <form id="del-form" action="{{route('status.destroy', $StatusDataList->status_id)}}" method="POST" style="display: none;">
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                      <a href="{{route('status.destroy', $StatusDataList->status_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();">ลบ</a>
+                                      <form id="del-form" action="{{route('status.destroy', $StatusDataList->status_id)}}" method="POST" style="display: none;">
+                                              @csrf
+                                              @method('DELETE')
+                                       </form>
+
                     </li>
                 @endforeach
             </ul>
           </div>
-
     </body>
 </html>
