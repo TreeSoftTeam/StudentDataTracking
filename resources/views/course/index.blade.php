@@ -70,11 +70,11 @@
             <ul class="list-group">
                 @foreach($CourseDataList as $CourseDataList)
                     <li class="list-group-item"><a>{{$CourseDataList->course_name}}</a> <a href="/course/{{$CourseDataList->course_id}}/edit">แก้ไขข้อมูล</a>
-                      <a href="{{route('course.destroy', $CourseDataList->course_id)}}" onclick="submit();">ลบ</a>
-                      <form id="del-form" action="{{route('course.destroy', $CourseDataList->course_id)}}" method="POST" style="display: none;">
-                        @csrf
-                        @method('DELETE')
-                      </form>
+                      <a href="{{route('status.destroy', $CourseDataList->course_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();">ลบ</a>
+                            <form id="del-form" action="{{route('course.destroy', $CourseDataList->course_id)}}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
 
                     </li>
                 @endforeach

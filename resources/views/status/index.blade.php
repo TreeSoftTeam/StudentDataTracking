@@ -71,10 +71,10 @@
                 @foreach($StatusDataList as $StatusDataList)
                     <li class="list-group-item"><a>{{$StatusDataList->status_name}}</a><a href="/status/{{$StatusDataList->status_id}}/edit">แก้ไขข้อมูล</a>
                       <a href="{{route('status.destroy', $StatusDataList->status_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();">ลบ</a>
-                                      <form id="del-form" action="{{route('status.destroy', $StatusDataList->status_id)}}" method="POST" style="display: none;">
-                                              @csrf
-                                              @method('DELETE')
-                                       </form>
+                            <form id="del-form" action="{{route('status.destroy', $StatusDataList->status_id)}}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
 
                     </li>
                 @endforeach
