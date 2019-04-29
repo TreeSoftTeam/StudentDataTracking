@@ -80,8 +80,9 @@
             @endif
 
             <div class="content">
+              <img src="assets/images/1.png" alt="Smiley face" height="300" width="300">
                 <div class="title m-b-md">
-                    Laravel
+                    Payap inter
                 </div>
 
                 <div class="links">
