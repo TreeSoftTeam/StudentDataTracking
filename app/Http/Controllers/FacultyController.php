@@ -103,9 +103,6 @@ class FacultyController extends Controller
     {
         $FacultyData = Faculty::findOrFail($faculty->faculty_id);
         $FacultyData -> delete();
-        echo "Delete Successfully";
-        if($FacultyData -> delete()){
-            echo "Delete Successfully";
-        }
+        return redirect()->route('faculty.index');
     }
 }

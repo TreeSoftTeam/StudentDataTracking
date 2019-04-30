@@ -44,7 +44,7 @@ class DepartmentController extends Controller
 
         $form_data = array(
          
-            'departmentname' => $request->department_name,
+            'department_name' => $request->department_name,
         );
 
         Department::create($form_data);
@@ -103,9 +103,7 @@ class DepartmentController extends Controller
     {
         $DepartmentData = Department::findOrFail($department->department_id);
         $DepartmentData -> delete();
-        echo "Delete Successfully";
-        if($DepartmentData -> delete()){
-            echo "Delete Successfully";
-        }
+        return redirect()->route('department.index');
+        
     }
 }
