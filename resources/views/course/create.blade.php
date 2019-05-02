@@ -44,7 +44,7 @@
                     <form method="POST" action="{{route('course.store')}}" enctype="multipart/form-data">
                       @csrf
                       <div class="form-group">
-                        <input type="text" name="course_name" class="form-control" placeholder="Enter course_name"/>
+                        <input type="text" name="course_name" class="form-control" placeholder="Enter course name"/>
                         <input type="submit" name="save" class="btn btn-primary" value="save" />
                       </div>
                     </form>

@@ -25,7 +25,8 @@ class StatusController extends Controller
      */
     public function create()
     {
-        return view ('status.create');
+        $StatusDataList = Status::all();
+        return view ('status.create',['StatusDataList'=>$StatusDataList]);
     }
 
     /**
@@ -96,7 +97,7 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-      $StatusData = Status::findOrFail($status->status_id);
+      $StatusData = Status::where($status->status_id);
       $StatusData -> delete();
       return redirect()->route('status.index');
 

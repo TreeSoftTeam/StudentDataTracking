@@ -41,25 +41,20 @@
                 <div class="card">
                 <div class="card-header">Status</div>
                 <div class="card-body">
+
         Welcome to manage status
         <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
             <ul class="list-group">
               <a href="{{route('status.create')}}">Create</a>
                 @foreach($StatusDataList as $StatusDataList)
-                <select id="status_id" name="status_name" style="font-size:12px; width:270px;" onchange="checkSelectIIE(this.value)">
-                            <option value="status_id">{{$StatusDataList->status_name}}</option>
-                                                        <option value="status_id">{{$StatusDataList->status_name}}</option>
-                                                    </select>
-                    <a href="/status/{{$StatusDataList->status_id}}/edit">แก้ไขข้อมูล</a>
+                <li class="list-group-item"><a>{{$StatusDataList->status_name}} <a href="/status/{{$StatusDataList->status_id}}/edit">แก้ไขข้อมูล</a>
                       <a href="{{route('status.destroy', $StatusDataList->status_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();">ลบ</a>
                             <form id="del-form" action="{{route('status.destroy', $StatusDataList->status_id)}}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>
-
-                    </li>
-
-                @endforeach
+                          </li>
+                    @endforeach
                   </ul>
                 </div>
               </div>
