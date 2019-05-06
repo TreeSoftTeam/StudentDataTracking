@@ -48,11 +48,14 @@
                                             <a>{{$FacultyDataList->faculty_name}} 
                                                 <a href="/faculty/{{$FacultyDataList->faculty_id}}">ดูข้อมูล</a> 
                                                 <a href="/faculty/{{$FacultyDataList->faculty_id}}/edit">แก้ไขข้อมูล</a>
-                                            <a href="{{route('faculty.destroy', $FacultyDataList->faculty_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();"></a>                               
+                                            
+                                                <!-- <a href="{{route('faculty.destroy', $FacultyDataList->faculty_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();"></a> -->                  
+                                            <a href="deletelink" onclick="return confirm('Are you sure?')">
                                             <form id="del-form" action="{{route('faculty.destroy', $FacultyDataList->faculty_id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                                    <button class="btn btn-danger" type="submit">Delete</button> 
+                                            </a>
                                             </form>
                                         </li>
                                     @endforeach
@@ -66,7 +69,7 @@
 </div>
 </div>
 </div>       
-            </div>
+                </div>
             </nav>
     </body>
 </html>
