@@ -117,80 +117,68 @@
             </div>
         </div>
 
+          <main class="py-4">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="card">
+                  <div class="card-header">Create marital_status</div>
+                  <div class="card-body">
 
-        <main class="py-4">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-md-8">
-                <div class="card">
-                <div class="card-header">Status</div>
-                <div class="card-body">
-                  <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
-                      <ul class="list-group">
-                  Welcome to manage status
-                  <form method="POST" action="{{route('status.store')}}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                      <input type="text" name="status_name" class="form-control" placeholder="Enter create status name"/>
-                      <input type="submit" name="save" class="btn btn-primary" value="save" />
-                    </div>
-                  </form>
-
-                @foreach($StatusDataList as $StatusDataList)
-                <li class="list-group-item"><a>{{$StatusDataList->status_name}} <a href="/status/{{$StatusDataList->status_id}}/edit">แก้ไขข้อมูล</a>
-                      <a href="{{route('status.destroy', $StatusDataList->status_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();">ลบ</a>
-                            <form id="del-form" action="{{route('status.destroy', $StatusDataList->status_id)}}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                          </li>
-                    @endforeach
-                  </ul>
-                </div>
-              </div>
-            </div>
+      <h3>{{$Marital_statusData->marital_status_name}}</h3>
+      <form method="post" action="{{ route('marital_status.update', $Marital_statusData->marital_status_id) }}" enctype="multipart/form-data">
+        @csrf
+        @method('PATCH')
+        <div class="form-group">
+            <input type="text" name="marital_status_name" class="form-control" placeholder="Enter marital status name"/>
+            <input type="submit" name="save" class="btn btn-primary" value="save" />
           </div>
-        </div>
-      </div>
+      </form>
 
-      <div class="content-page">
-              <!-- Start content -->
-              <div class="content">
-                  <div class="container-fluid">
-
-      @yield('content')
-
-          </div> <!-- content -->
-
-          <footer class="footer text-right">
-              &copy; 2019 - 2030. All rights reserved.
-          </footer>
-
-      </div>
     </div>
-    <script>
-        var resizefunc = [];
-    </script>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="content-page">
+          <!-- Start content -->
+          <div class="content">
+              <div class="container-fluid">
 
-    <!-- jQuery  -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script><!-- Popper for Bootstrap -->
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/detect.js') }}"></script>
-    <script src="{{ asset('assets/js/fastclick.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.blockUI.js') }}"></script>
-    <script src="{{ asset('assets/js/waves.js') }}"></script>
-    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
-    <script src=" {{ asset('assets/js/jquery.scrollTo.min.js') }}"></script>
+  @yield('content')
+
+      </div> <!-- content -->
+
+      <footer class="footer text-right">
+          &copy; 2019 - 2030. All rights reserved.
+      </footer>
+
+  </div>
+</div>
+
+<script>
+    var resizefunc = [];
+</script>
+
+<!-- jQuery  -->
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script><!-- Popper for Bootstrap -->
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/detect.js') }}"></script>
+<script src="{{ asset('assets/js/fastclick.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.blockUI.js') }}"></script>
+<script src="{{ asset('assets/js/waves.js') }}"></script>
+<script src="{{ asset('assets/js/wow.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+<script src=" {{ asset('assets/js/jquery.scrollTo.min.js') }}"></script>
 
 
-    <!-- jQuery  -->
-    @yield('bottom')
+<!-- jQuery  -->
+@yield('bottom')
 
-    <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
-    </main>
-  </body>
-</html>
+<script src="{{ asset('assets/js/jquery.core.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.app.js') }}"></script>
+</main>
+</body>
+  </html>

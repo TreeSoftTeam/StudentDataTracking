@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::resource('status', 'StatusController');
 Route::resource('course', 'CourseController');
 Route::resource('student', 'StudentController');
+Route::resource('marital_status', 'Marital_statusController');
 Auth::routes();
 
 

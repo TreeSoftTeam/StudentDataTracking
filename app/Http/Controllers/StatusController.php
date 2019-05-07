@@ -97,7 +97,7 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-      $StatusData = Status::where($status->status_id);
+      $StatusData = Status::findOrFail($status->status_id);
       $StatusData -> delete();
       return redirect()->route('status.index');
 

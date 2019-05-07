@@ -124,10 +124,17 @@
                 <div class="card">
                 <div class="card-header">Course</div>
                 <div class="card-body">
+                  <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
+                    <ul class="list-group">
         Welcome to manage Course
-        <div class="col-md-9 col-lg-9 col-sm-3 pull-left">
-            <ul class="list-group">
-              <a href="{{route('course.create')}}">Create</a>
+        <form method="POST" action="{{route('course.store')}}" enctype="multipart/form-data">
+          @csrf
+          <div class="form-group">
+            <input type="text" name="course_name" class="form-control" placeholder="Enter course name"/>
+            <input type="submit" name="save" class="btn btn-primary" value="save" />
+          </div>
+        </form>
+        
                 @foreach($CourseDataList as $CourseDataList)
                     <li class="list-group-item"><a>{{$CourseDataList->course_name}} <a href="/course/{{$CourseDataList->course_id}}/edit">แก้ไขข้อมูล</a>
                       <a href="{{route('course.destroy', $CourseDataList->course_id)}}" onclick="event.preventDefault(); document.getElementById('del-form').submit();">ลบ</a>
